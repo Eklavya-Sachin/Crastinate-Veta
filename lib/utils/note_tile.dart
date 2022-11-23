@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:note_one/screen/input_note_detail_screen.dart';
+import '../screen/input_note_detail_screen.dart';
 
 // ignore: must_be_immutable
 class ToDoTile extends StatelessWidget {
