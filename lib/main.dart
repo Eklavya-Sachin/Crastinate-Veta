@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:note_one/screen/all_note_screen.dart';
+import 'package:note_one/screen/note_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
+      home: const NoteScreen(),
     );
   }
 }
