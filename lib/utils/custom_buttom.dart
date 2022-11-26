@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'create_new_note.dart';
+import '../screen/create_new_note.dart';
 
 // ignore: must_be_immutable
 class CustomButton extends StatelessWidget {
