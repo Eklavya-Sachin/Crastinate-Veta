@@ -19,9 +19,9 @@ class _NoteScreenState extends State<NoteScreen> {
 
   List<Note> searchResult = [];
 
-  void deleteTask(String index) {
+  void deleteTask(String id) {
     setState(() {
-      noteListItem.removeWhere((element) => element.id == index);
+      searchResult.removeWhere((element) => element.id == id);
     });
   }
 
@@ -107,7 +107,8 @@ class _NoteScreenState extends State<NoteScreen> {
                     taskName: searchResult[index].noteText.toString(),
                     taskDescription:
                         searchResult[index].noteDescription.toString(),
-                    deleteTask: (context) => deleteTask,
+                    deleteTask: (context) =>
+                        deleteTask(searchResult[index].id!),
                     editTask: (context) => editTask(index),
                   );
                 })
