@@ -13,12 +13,6 @@ class Note {
           noteDescription:
               'Sachin is a health guy who workout erverydayvchchbcbckbczbh,cvzbh,vjb,vcjcvhcvxhjkbcvxhjbcvxhbcxvhbcvhbvbk,nmzzh'),
       Note(id: '02', noteText: 'Buy Groceries', noteDescription: ''),
-      Note(id: '03', noteText: 'Check Email', noteDescription: ''),
-      Note(id: '04', noteText: 'Team Meating', noteDescription: ''),
-      Note(
-          id: '05',
-          noteText: 'Work On Note App For 2 Hours',
-          noteDescription: 'Svcjhc'),
     ];
   }
 }
