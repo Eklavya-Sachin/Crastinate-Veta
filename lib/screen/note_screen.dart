@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:note_one/utils/custom_buttom.dart';
 import 'package:note_one/utils/note_tile.dart';
 import '../models/note_model.dart';
+import 'create_new_note.dart';
 
 class NoteScreen extends StatefulWidget {
   const NoteScreen({Key? key}) : super(key: key);
@@ -104,6 +104,7 @@ class _NoteScreenState extends State<NoteScreen> {
                 itemCount: searchResult.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ToDoTile(
+                    note: searchResult[index],
                     taskName: searchResult[index].noteText.toString(),
                     taskDescription:
                         searchResult[index].noteDescription.toString(),
@@ -119,7 +120,52 @@ class _NoteScreenState extends State<NoteScreen> {
                 ),
               ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: const CustomButton(),
+        floatingActionButton: SizedBox(
+          height: 52,
+          width: 150,
+          child: Material(
+            borderRadius: BorderRadius.circular(16),
+            color: const Color(0xff6B50FF), // button color
+            child: InkWell(
+              borderRadius: BorderRadius.circular(16),
+              splashColor: Colors.deepPurpleAccent, // splash color
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const CreateNewNote();
+                    },
+                  ),
+                ).then(
+                  (createNote) {
+                    setState(() {
+                      searchResult.add(createNote);
+                    });
+                  },
+                );
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const <Widget>[
+                  Icon(
+                    Icons.add_circle_outline,
+                    color: Colors.white,
+                    size: 32,
+                  ),
+                  SizedBox(width: 12),
+                  Text(
+                    "New",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

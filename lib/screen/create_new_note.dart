@@ -12,18 +12,8 @@ class _CreateNewNoteState extends State<CreateNewNote> {
   final _titleController = TextEditingController();
   final _descritionController = TextEditingController();
 
-  final noteListItem = Note.noteList();
-
-  void saveNewTask(String note, String noteDescription) {
-    setState(() {
-      noteListItem.add(Note(
-          id: DateTime.now().microsecondsSinceEpoch.toString(),
-          noteText: note,
-          noteDescription: noteDescription));
-      _descritionController.clear();
-      _titleController.clear();
-    });
-    Navigator.of(context).pop();
+  void goBackToSavenote(Note createdNote) {
+    Navigator.pop(context, createdNote);
   }
 
   @override
@@ -32,14 +22,19 @@ class _CreateNewNoteState extends State<CreateNewNote> {
       backgroundColor: const Color.fromARGB(255, 27, 27, 36),
       appBar: AppBar(
         actions: [
-          IconButton(
-            onPressed: () {
-              saveNewTask(
-                _titleController.text.trim(),
-                _descritionController.text.trim(),
-              );
-            },
-            icon: const Icon(Icons.save),
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: IconButton(
+              onPressed: () => goBackToSavenote(Note(
+                id: DateTime.now().millisecondsSinceEpoch.toString(),
+                noteText: _titleController.text.trim(),
+                noteDescription: _descritionController.text.trim(),
+              )),
+              icon: const Icon(
+                Icons.save,
+                size: 35,
+              ),
+            ),
           ),
         ],
         leading: IconButton(
@@ -48,9 +43,14 @@ class _CreateNewNoteState extends State<CreateNewNote> {
               Navigator.pop(context);
             }),
         backgroundColor: const Color.fromARGB(255, 27, 27, 36),
-        titleSpacing: 80,
+        titleSpacing: 50,
         elevation: 0,
-        title: const Text('Time'),
+        title: Text(
+          DateTime.now().toString(),
+          style: const TextStyle(fontSize: 22),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
       ),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),

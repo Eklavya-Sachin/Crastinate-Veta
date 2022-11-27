@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import '../models/note_model.dart';
 import '../screen/show_note.dart';
 
 // ignore: must_be_immutable
 class ToDoTile extends StatelessWidget {
+  final Note note;
   final String taskName;
   final String taskDescription;
   Function(BuildContext)? editTask;
@@ -11,6 +13,7 @@ class ToDoTile extends StatelessWidget {
 
   ToDoTile({
     Key? key,
+    required this.note,
     required this.taskName,
     required this.editTask,
     required this.deleteTask,
@@ -51,7 +54,9 @@ class ToDoTile extends StatelessWidget {
           onTap: () => Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ShowNote(),
+              builder: (context) => ShowNote(
+                note: note,
+              ),
             ),
           ),
           child: Container(
