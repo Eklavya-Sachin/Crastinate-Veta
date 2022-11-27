@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import '../models/note_model.dart';
 
 class ShowNote extends StatelessWidget {
-   ShowNote({Key? key}) : super(key: key);
- 
-  final noteListItem = Note.noteList();
+  const ShowNote({Key? key, required this.note}) : super(key: key);
 
+  final Note note;
 
   @override
   Widget build(BuildContext context) {
@@ -18,19 +17,17 @@ class ShowNote extends StatelessWidget {
       body: Container(
           padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
           child: Column(
-            children:  [
+            children: [
               Text(
-               'Title',
+                note.noteText.toString(),
                 style: const TextStyle(
                     color: Colors.white,
                     fontSize: 23,
                     fontWeight: FontWeight.w600),
               ),
-              const SizedBox(
-                height: 50,
-              ),
+              const SizedBox(height: 50),
               Text(
-               "desription",
+                note.noteDescription.toString(),
                 style: const TextStyle(
                     color: Colors.white,
                     fontSize: 18,
